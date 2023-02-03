@@ -8,10 +8,9 @@ module.exports = {
     delete: deleteSkill
 };
 
-function deleteOne(id) {
-    id = parseInt(id);
-    const idx = skills.findIndex(skill => skill.id === id);
-    skills.splice(idx, 1);
+function deleteSkill(req, res) {
+    Skill.deleteOne(req.params.id);
+    res.redirect('/skills');
   }
 
 function index(req, res) {
@@ -37,17 +36,4 @@ function create(req, res) {
     res.redirect('/skills');
 }
 
-function deleteSkill(req, res) {
-    Skill.deleteOne(req.params.id);
-    res.redirect('/skills');
-}
 
-function create(req, res) {
-    console.log(req.body);
-    res.redirect('/skills');
-  }
-
-  function deleteskill(req, res) {
-    skill.deleteOne(req.params.id);
-    res.redirect('/skills');
-  }

@@ -7,11 +7,12 @@ const skills = [
   module.exports = {
     getAll,
     getOne,
-    create
+    create,
+    deleteOne, 
+
   };
     
   function create(skill) {
-   
     skill.id = Date.now() % 1000000;
     skill.done = false;
     skills.push(skill);
@@ -24,4 +25,11 @@ const skills = [
   
   function getAll() {
     return skills;
+  }
+
+  function deleteOne(id) {
+    id = parseInt(id);
+    // Find the index for the todo
+    const idx = skills.findIndex(skill => skill.id === id);
+    skills.splice(idx, 1);
   }
